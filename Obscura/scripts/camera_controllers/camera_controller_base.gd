@@ -8,6 +8,7 @@ extends Camera3D
 @export var min_zoom:float = 5.0
 @export var max_zoom:float = 100.0
 @export var draw_camera_logic:bool = true
+var previous_draw_camera_logic:bool = false
 
 #camera tilt around the z axis in radians
 #var _camera_tilt_rad:float = 0.0
@@ -25,6 +26,14 @@ func _process(delta: float) -> void:
 		dist_above_target = clampf(dist_above_target - zoom_speed * delta, min_zoom, max_zoom)
 	if Input.is_action_pressed("zoom_out"):
 		dist_above_target = clampf(dist_above_target + zoom_speed * delta, min_zoom, max_zoom)
+	
+	if draw_camera_logic != previous_draw_camera_logic:
+		if draw_camera_logic:
+			print("draw_camera_logic is ON")
+		else:
+			print("draw_camera_logic is OFF")
+		previous_draw_camera_logic = draw_camera_logic
+	
 	
 	#camera tilt code for the brave
 	#if Input.is_action_pressed("camera_tilt_left"):
