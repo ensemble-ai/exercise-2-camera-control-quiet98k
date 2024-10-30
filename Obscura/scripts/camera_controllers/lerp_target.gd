@@ -6,8 +6,8 @@ extends CameraControllerBase
 @export var catchup_speed:float = 100
 @export var leash_distance:float = 10
 
-@export var cross_width:float = 5
-@export var cross_height:float = 5
+var cross_width:float = 5
+var cross_height:float = 5
 
 @onready var timer:Timer = $CatchupDelayTimer
 
@@ -28,7 +28,9 @@ func _process(delta: float) -> void:
 	if draw_camera_logic:
 		draw_logic()
 		
-	lead_speed = target.speed * 2
+		
+	lead_speed = target.speed * 5
+	#lead_speed = 200
 	var tpos = target.global_position
 	var cpos = global_position
 	

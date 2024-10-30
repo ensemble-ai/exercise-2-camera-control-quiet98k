@@ -5,8 +5,8 @@ extends CameraControllerBase
 @export var catchup_speed:float = 100
 @export var leash_distance:float = 20
 
-@export var cross_width:float = 5
-@export var cross_height:float = 5
+var cross_width:float = 5
+var cross_height:float = 5
 
 var velocity:Vector3
 
