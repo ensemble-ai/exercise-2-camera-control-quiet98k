@@ -1,20 +1,25 @@
-class_name PositionLockLerp
+class_name LerpTarget
 extends CameraControllerBase
 
-@export var follow_speed:float
+@export var lead_speed:float
+@export var catchup_delay_duration:float = 0.5
 @export var catchup_speed:float = 100
-@export var leash_distance:float = 20
+@export var leash_distance:float = 10
 
 @export var cross_width:float = 5
 @export var cross_height:float = 5
 
-var velocity:Vector3
+@onready var timer:Timer = $CatchupDelayTimer
+
+var speed: float = 0
+var started: bool = false
+
 
 func _ready() -> void:
 	super()
 	position = target.position
-	draw_camera_logic = true
-	
+	draw_camera_logic = true	
+	#lead_speed = target.speed * 2
 
 func _process(delta: float) -> void:
 	if !current:
@@ -22,19 +27,38 @@ func _process(delta: float) -> void:
 	
 	if draw_camera_logic:
 		draw_logic()
-	follow_speed = target.speed * 0.75
+		
+	lead_speed = target.speed * 2
 	var tpos = target.global_position
 	var cpos = global_position
 	
-	#var direction = (tpos-cpos).limit_length(1)
-	var direction = cpos.direction_to(tpos)
-	var distance = cpos.distance_to(tpos)
+	var input_dir = Vector2(
+		Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"),
+		Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+		).limit_length(1.0)
 	
-	var speed: float
+	var forward_vector = (Vector3(input_dir.x, 0, input_dir.y)).normalized()
+
+
+	# Calculate the desired position in front of the target
+	var lead_position = tpos + forward_vector * leash_distance
+
+	# Calculate the direction towards the lead position
+	var direction = cpos.direction_to(lead_position)
+	var distance = cpos.distance_to(lead_position)
+
+
+	# Determine the speed based on target's velocity
 	if target.velocity.length() > 0.1:
-		speed = follow_speed
+		speed = lead_speed
+		started = true
+		timer.stop()
 	else:
-		speed = catchup_speed
+		if timer.is_stopped():
+			speed = 0
+			timer.start(catchup_delay_duration)
+
+
 
 	global_position += direction * speed * delta
 	
@@ -88,3 +112,7 @@ func draw_logic() -> void:
 	#mesh is freed after one update of _process
 	await get_tree().process_frame
 	mesh_instance.queue_free()
+
+
+func _on_catchup_delay_timer_timeout() -> void:
+	speed = catchup_speed 
