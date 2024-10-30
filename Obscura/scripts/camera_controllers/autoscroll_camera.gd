@@ -6,8 +6,6 @@ extends CameraControllerBase
 @export var bottom_right:Vector2 = Vector2(5,10)
 @export var autoscroll_speed:Vector3 = Vector3(50,0,0)
 
-@export var box_width:float = 10.0
-@export var box_height:float = 10.0
 
 
 func _ready() -> void:
