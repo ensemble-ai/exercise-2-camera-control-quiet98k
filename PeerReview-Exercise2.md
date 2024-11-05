@@ -141,13 +141,23 @@ Please refer to the first code review template on how to do a permalink.
 
 
 #### Style Guide Infractions ####
+* Inconsistent use of the number of blank lines - between each function, there should be two blank lines while within functions only one space should be used to separate logical sections. In the code, this rule is not consistently followed: [example 1: too little spaces between functions](https://github.com/ensemble-ai/exercise-2-camera-control-quiet98k/blob/9eea5306f415ae8e54d861c0eb720a00595de31f/Obscura/scripts/camera_controllers/autoscroll_camera.gd#L15), [example 2: too many spaces between functions](https://github.com/ensemble-ai/exercise-2-camera-control-quiet98k/blob/9eea5306f415ae8e54d861c0eb720a00595de31f/Obscura/scripts/camera_controllers/position_lock_lerp.gd#L60-L62), [example 3: more than one space in logical sections](https://github.com/ensemble-ai/exercise-2-camera-control-quiet98k/blob/9eea5306f415ae8e54d861c0eb720a00595de31f/Obscura/scripts/camera_controllers/lerp_target.gd#L63-L65)
+  
+* [Did not format multiline statements for readability](https://github.com/ensemble-ai/exercise-2-camera-control-quiet98k/blob/9eea5306f415ae8e54d861c0eb720a00595de31f/Obscura/scripts/camera_controllers/speedup_push.gd#L33-L59) - for conditional statements with multiple expressions, they should be wrapped over multiple lines
+
+* Missing comment space - some comments are missing a space between the hashtag and description: [example 1](https://github.com/ensemble-ai/exercise-2-camera-control-quiet98k/blob/9eea5306f415ae8e54d861c0eb720a00595de31f/Obscura/scripts/camera_controllers/position_lock_lerp.gd#L46), [example 2](https://github.com/ensemble-ai/exercise-2-camera-control-quiet98k/blob/9eea5306f415ae8e54d861c0eb720a00595de31f/Obscura/scripts/camera_controllers/position_lock.gd#L27)
+
+* Missing prepended underscore - private variables need an underscore in front of their name: [example 1](https://github.com/ensemble-ai/exercise-2-camera-control-quiet98k/blob/9eea5306f415ae8e54d861c0eb720a00595de31f/Obscura/scripts/camera_controllers/lerp_target.gd#L14-L15), [example 2](https://github.com/ensemble-ai/exercise-2-camera-control-quiet98k/blob/9eea5306f415ae8e54d861c0eb720a00595de31f/Obscura/scripts/camera_controllers/position_lock_lerp.gd#L8-L11)
+
+* [Incorrect code order](https://github.com/ensemble-ai/exercise-2-camera-control-quiet98k/blob/9eea5306f415ae8e54d861c0eb720a00595de31f/Obscura/scripts/camera_controllers/lerp_target.gd#L9-L15) - the onready variable should be after the private ones
 
 #### Style Guide Exemplars ####
+* Overall, kept one statement per line to increase code readability: [example 1](https://github.com/ensemble-ai/exercise-2-camera-control-quiet98k/blob/9eea5306f415ae8e54d861c0eb720a00595de31f/Obscura/scripts/camera_controllers/camera_controller_base.gd#L30-L35), [example 2](https://github.com/ensemble-ai/exercise-2-camera-control-quiet98k/blob/9eea5306f415ae8e54d861c0eb720a00595de31f/Obscura/scripts/camera_controllers/position_lock.gd#L29-L35)
 
-___
-#### Put style guide infractures ####
+* [Use of english terms for boolean operators](https://github.com/ensemble-ai/exercise-2-camera-control-quiet98k/blob/9eea5306f415ae8e54d861c0eb720a00595de31f/Obscura/scripts/camera_controllers/speedup_push.gd#L33-L59) - replaced && with "and" to increase readability
 
-___
+* Snake case - variables use snake case in their naming: [example 1](https://github.com/ensemble-ai/exercise-2-camera-control-quiet98k/blob/9eea5306f415ae8e54d861c0eb720a00595de31f/Obscura/scripts/camera_controllers/position_lock.gd#L29), [example 2](https://github.com/ensemble-ai/exercise-2-camera-control-quiet98k/blob/9eea5306f415ae8e54d861c0eb720a00595de31f/Obscura/scripts/camera_controllers/lerp_target.gd#L47)
+
 
 # Best Practices #
 
@@ -161,5 +171,6 @@ If the student has breached the best practices and has done something that shoul
 This should be similar to the Code Style justification.
 
 #### Best Practices Infractions ####
+* Comments that were left hanging - code becomes more cluttered when there are comments sitting around that do not help describe what is happening: [example 1](https://github.com/ensemble-ai/exercise-2-camera-control-quiet98k/blob/9eea5306f415ae8e54d861c0eb720a00595de31f/Obscura/scripts/camera_controllers/lerp_target.gd#L22), [example 2](https://github.com/ensemble-ai/exercise-2-camera-control-quiet98k/blob/9eea5306f415ae8e54d861c0eb720a00595de31f/Obscura/scripts/camera_controllers/speedup_push.gd#L34)
 
 #### Best Practices Exemplars ####
