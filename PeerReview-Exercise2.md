@@ -75,10 +75,27 @@ ___
 
 ___
 #### Justification ##### 
-The autoscroll camera follows all basic criteria, especially including the exported fields of box size and autoscroll speed. For actual movement, the camera autoscrolls properly and the player autoscrolls as well. The camera works with any box size and any direction of movement, with the box itself always being drawn accordingly. Hyperspeed does not change camera operation. The code itself includes [checks that keep the player within the boundaries of the autoscroll box]{https://github.com/ensemble-ai/exercise-2-camera-control-quiet98k/blob/0584257d9f3d8fca1a0f33fa5425fea1a291995f/Obscura/scripts/camera_controllers/autoscroll_camera.gd#L30-L44}. This works as it should.
+The autoscroll camera follows all basic criteria, especially including the exported fields of box size and autoscroll speed. For actual movement, the camera autoscrolls properly and the player autoscrolls as well. The camera works with any box size and any direction of movement, with the box itself always being drawn accordingly. Hyperspeed does not change camera operation. 
+
+The code itself includes [checks that keep the player within the boundaries of the autoscroll box](https://github.com/ensemble-ai/exercise-2-camera-control-quiet98k/blob/0584257d9f3d8fca1a0f33fa5425fea1a291995f/Obscura/scripts/camera_controllers/autoscroll_camera.gd#L30-L44). This works as it should.
 
 ___
 ### Stage 3 ###
+
+- [ ] Perfect
+- [x] Great
+- [ ] Good
+- [ ] Satisfactory
+- [ ] Unsatisfactory
+
+___
+#### Justification ##### 
+Camera appears to work properly and follow most of the criteria. The camera trails behind the target in any direction and catches up immediately when the player stops, even in hyperspeed. Code succesfully keeps camera within leash distance to the target. The cross for the camera is drawn correctly.
+
+There is a big problem with the exports. For both catchup speed and leash distance, they work properly and if changed, continue to work. However, although follow speed was created as an export, the code itself [hardcodes follow speed to always be 75% of the target speed](https://github.com/ensemble-ai/exercise-2-camera-control-quiet98k/blob/0584257d9f3d8fca1a0f33fa5425fea1a291995f/Obscura/scripts/camera_controllers/position_lock_lerp.gd#L26). This means if the user sets follow speed themselves, the set value is ignored by the code. So, follow speed ends up always the same.
+
+___
+### Stage 4 ###
 
 - [ ] Perfect
 - [ ] Great
@@ -88,27 +105,17 @@ ___
 
 ___
 #### Justification ##### 
-Camera appears to work properly and follow most of the criteria. The camera trails behind the target in any direction and catches up immediately when the player stops, even in hyperspeed. Code succesfully keeps camera within leash distance to the target. The cross for the camera is drawn correctly.
+Camera works properly in some areas and follows most of the criteria. The camera does lead in front of the target properly in any direction, and there is a timer that successfully accounts for delay before allowing catchup to happen. Code keeps the camera within leash distance to the target and the cross is drawn properly.
 
-There is a big problem with the exports. For both catchup speed and leash distance, they work properly and if changed, continue to work. However, although follow speed was created as an export, the code itself [hardcodes follow speed to always be 75% of the target speed]{https://github.com/ensemble-ai/exercise-2-camera-control-quiet98k/blob/0584257d9f3d8fca1a0f33fa5425fea1a291995f/Obscura/scripts/camera_controllers/position_lock_lerp.gd#L26}. This means if the user sets follow speed themselves, the set value is ignored by the code. So, follow speed ends up always the same.
+There are two issues in this stage:
 
-___
-### Stage 4 ###
-
-- [ ] Perfect
-- [ ] Great
-- [ ] Good
-- [ ] Satisfactory
-- [ ] Unsatisfactory
-
-___
-#### Justification ##### 
-Write Justification here.
+1) The exports for leash distance, catchup speed, and delay all work properly with any inputs. However, similar to stage 3, lead speed is defined as an export but then is [hardcoded to 5 times the target speed](https://github.com/ensemble-ai/exercise-2-camera-control-quiet98k/blob/5ffe1067d8dfa474af8fde57a21f79ff773a2380/Obscura/scripts/camera_controllers/lerp_target.gd#L33). So, even if the user sets the lead speed, nothing appears to change, which breaks the idea of an export.
+2) There is weird target snapping happening once the target stops moving. In normal speed, the target very slightly snaps towards the center of the camera, waits for delay, and then the camera catches up to the target. This becomes very apparent in hyperspeed. Once the target stops moving, it snaps a large distance towards the center of the camera before normal delay and catchup occur. This could be something to do with leash distance during catchup or just how the code deals with a player stopping.
 
 ___
 ### Stage 5 ###
 
-- [ ] Perfect
+- [x] Perfect
 - [ ] Great
 - [ ] Good
 - [ ] Satisfactory
@@ -116,7 +123,7 @@ ___
 
 ___
 #### Justification ##### 
-Write Justification here.
+Camera works correctly and follows all criteria. All exports are properly dealt with and work the same if they are changed. Within the speedup zone, the camera movement accounts for push ratio, and if it is touching a push box border, it moves at full speed. If in the inner box or going towards the inner box, the camera does not move at all. The borders are drawn correctly.
 ___
 # Code Style #
 
