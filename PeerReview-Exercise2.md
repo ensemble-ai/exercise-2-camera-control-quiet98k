@@ -141,7 +141,10 @@ Please refer to the first code review template on how to do a permalink.
 
 
 #### Style Guide Infractions ####
-* Inconsistent use of the number of blank lines - between each function, there should be two blank lines while within functions only one space should be used to separate logical sections. In the code, this rule is not consistently followed: [example 1: too little spaces between functions](https://github.com/ensemble-ai/exercise-2-camera-control-quiet98k/blob/9eea5306f415ae8e54d861c0eb720a00595de31f/Obscura/scripts/camera_controllers/autoscroll_camera.gd#L15), [example 2: too many spaces between functions](https://github.com/ensemble-ai/exercise-2-camera-control-quiet98k/blob/9eea5306f415ae8e54d861c0eb720a00595de31f/Obscura/scripts/camera_controllers/position_lock_lerp.gd#L60-L62), [example 3: more than one space in logical sections](https://github.com/ensemble-ai/exercise-2-camera-control-quiet98k/blob/9eea5306f415ae8e54d861c0eb720a00595de31f/Obscura/scripts/camera_controllers/lerp_target.gd#L63-L65)
+* Inconsistent use of the number of blank lines - between each function, there should be two blank lines while within functions only one space should be used to separate logical sections. In the code, this rule is not consistently followed:
+[example 1: too little spaces between functions](https://github.com/ensemble-ai/exercise-2-camera-control-quiet98k/blob/9eea5306f415ae8e54d861c0eb720a00595de31f/Obscura/scripts/camera_controllers/autoscroll_camera.gd#L15),
+[example 2: too many spaces between functions](https://github.com/ensemble-ai/exercise-2-camera-control-quiet98k/blob/9eea5306f415ae8e54d861c0eb720a00595de31f/Obscura/scripts/camera_controllers/position_lock_lerp.gd#L60-L62),
+[example 3: more than one space in logical sections](https://github.com/ensemble-ai/exercise-2-camera-control-quiet98k/blob/9eea5306f415ae8e54d861c0eb720a00595de31f/Obscura/scripts/camera_controllers/lerp_target.gd#L63-L65)
   
 * [Did not format multiline statements for readability](https://github.com/ensemble-ai/exercise-2-camera-control-quiet98k/blob/9eea5306f415ae8e54d861c0eb720a00595de31f/Obscura/scripts/camera_controllers/speedup_push.gd#L33-L59) - for conditional statements with multiple expressions, they should be wrapped over multiple lines
 
@@ -173,4 +176,13 @@ This should be similar to the Code Style justification.
 #### Best Practices Infractions ####
 * Comments that were left hanging - code becomes more cluttered when there are comments sitting around that do not help describe what is happening: [example 1](https://github.com/ensemble-ai/exercise-2-camera-control-quiet98k/blob/9eea5306f415ae8e54d861c0eb720a00595de31f/Obscura/scripts/camera_controllers/lerp_target.gd#L22), [example 2](https://github.com/ensemble-ai/exercise-2-camera-control-quiet98k/blob/9eea5306f415ae8e54d861c0eb720a00595de31f/Obscura/scripts/camera_controllers/speedup_push.gd#L34)
 
+* Comments could be more descriptive [like this example](https://github.com/ensemble-ai/exercise-2-camera-control-quiet98k/blob/372c07de978909c080eed14191064df278b65ba9/Obscura/scripts/camera_controllers/lerp_target.gd#L46) - a lot of the comments throughout the code are one word and do not add a lot of useful explanation
+
+* [Unused variable](https://github.com/ensemble-ai/exercise-2-camera-control-quiet98k/blob/372c07de978909c080eed14191064df278b65ba9/Obscura/scripts/camera_controllers/lerp_target.gd#L51) - left a variable in the code that was not used anywhere else other than its declaration
+
+* [Variable names slightly too similar in naming](https://github.com/ensemble-ai/exercise-2-camera-control-quiet98k/blob/372c07de978909c080eed14191064df278b65ba9/Obscura/scripts/camera_controllers/speedup_push.gd#L29-L30) - As someone who coded the same exercise, I was able to understand the variable names but some greater differentiation between the two could make them clearer. For example saying one is for the push zone and the other is for the speedup zone.
+
 #### Best Practices Exemplars ####
+* Good amount of commits on the project, helps keep track of your work
+
+* Printing when [drawing logic is on or off](https://github.com/ensemble-ai/exercise-2-camera-control-quiet98k/blob/372c07de978909c080eed14191064df278b65ba9/Obscura/scripts/camera_controllers/camera_controller_base.gd#L30-L35) and printing [current camera](https://github.com/ensemble-ai/exercise-2-camera-control-quiet98k/blob/372c07de978909c080eed14191064df278b65ba9/Obscura/scripts/camera_selector.gd#L25) - the output terminal tells you which camera you are on and if the drawing logic is on. This can help new time users understand what is happening on their screen.
