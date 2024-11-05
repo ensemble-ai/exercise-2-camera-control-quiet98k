@@ -52,7 +52,7 @@ ___
 
 ### Stage 1 ###
 
-- [ ] Perfect
+- [x] Perfect
 - [ ] Great
 - [ ] Good
 - [ ] Satisfactory
@@ -60,12 +60,14 @@ ___
 
 ___
 #### Justification ##### 
-Write Justification here.
+Position lock camera fulfills all basic criteria, sucessfully drawing a cross onto the target and keeping the camera locked on it. Code uses differences between the camera and target position in the horizontal and vertical directions to decide how to move the camera. The camera also operates correctly with hyperspeed.
+
+Although no exports were necessary, I enjoy how the student added exports to change the cross size.
 
 ___
 ### Stage 2 ###
 
-- [ ] Perfect
+- [x] Perfect
 - [ ] Great
 - [ ] Good
 - [ ] Satisfactory
@@ -73,20 +75,22 @@ ___
 
 ___
 #### Justification ##### 
-Write Justification here.
+The autoscroll camera follows all basic criteria, especially including the exported fields of box size and autoscroll speed. For actual movement, the camera autoscrolls properly and the player autoscrolls as well. The camera works with any box size and any direction of movement, with the box itself always being drawn accordingly. Hyperspeed does not change camera operation. The code itself includes [checks that keep the player within the boundaries of the autoscroll box]{https://github.com/ensemble-ai/exercise-2-camera-control-quiet98k/blob/0584257d9f3d8fca1a0f33fa5425fea1a291995f/Obscura/scripts/camera_controllers/autoscroll_camera.gd#L30-L44}. This works as it should.
 
 ___
 ### Stage 3 ###
 
 - [ ] Perfect
 - [ ] Great
-- [ ] Good
+- [x] Good
 - [ ] Satisfactory
 - [ ] Unsatisfactory
 
 ___
 #### Justification ##### 
-Write Justification here.
+Camera appears to work properly and follow most of the criteria. The camera trails behind the target in any direction and catches up immediately when the player stops, even in hyperspeed. Code succesfully keeps camera within leash distance to the target. The cross for the camera is drawn correctly.
+
+There is a big problem with the exports. For both catchup speed and leash distance, they work properly and if changed, continue to work. However, although follow speed was created as an export, the code itself [hardcodes follow speed to always be 75% of the target speed]{https://github.com/ensemble-ai/exercise-2-camera-control-quiet98k/blob/0584257d9f3d8fca1a0f33fa5425fea1a291995f/Obscura/scripts/camera_controllers/position_lock_lerp.gd#L26}. This means if the user sets follow speed themselves, the set value is ignored by the code. So, follow speed ends up always the same.
 
 ___
 ### Stage 4 ###
